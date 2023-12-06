@@ -4,11 +4,11 @@ using OopExample.Models;
 
 namespace OopExample.Readers;
 
-public class PortugueseJsonReader
+public class PortugueseJsonReader : Reader
 {
     private List<Transaction>? transactions;
 
-    public void ReadFile(string path)
+    public override void ReadFile(string path)
     {
         using (var sr = new StreamReader(path))
         {
@@ -22,7 +22,7 @@ public class PortugueseJsonReader
         }
     }
 
-    public void PrintSummary()
+    public override void PrintSummary()
     {
         if (transactions == null)
         {

@@ -2,11 +2,11 @@ using OopExample.Models;
 
 namespace OopExample.Readers;
 
-public class EnglishCsvReader
+public class EnglishCsvReader : Reader
 {
     private List<Transaction>? transactions;
 
-    public void ReadFile(string path)
+    public override void ReadFile(string path)
     {
         transactions = new List<Transaction>();
 
@@ -60,7 +60,7 @@ public class EnglishCsvReader
         }
     }
 
-    public void PrintSummary()
+    public override void PrintSummary()
     {
         if (transactions == null)
         {

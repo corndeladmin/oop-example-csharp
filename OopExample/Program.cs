@@ -8,8 +8,29 @@ class Program
     {
         var path = args[0];
 
-        var reader = new EnglishCsvReader();
-        reader.ReadFile(path);
-        reader.PrintSummary();
+        var readers = new List<Reader>
+        {
+            new EnglishCsvReader(),
+            new EnglishJsonReader(),
+            new FrenchCsvReader(),
+            new FrenchJsonReader(),
+            new PortugueseCsvReader(),
+            new PortugueseJsonReader(),
+        };
+
+        foreach (var reader in readers)
+        {
+            try
+            {
+                reader.ReadFile(path);
+            }
+            catch
+            {
+                Console.WriteLine("Wrong format");
+                continue;
+            }
+
+            reader.PrintSummary();
+        }
     }
 }
