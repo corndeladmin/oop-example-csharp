@@ -1,17 +1,29 @@
-﻿using OopExample.Readers;
+﻿namespace OopExample;
 
-namespace OopExample;
-
-abstract class Shape
+interface IHasPerimeter
 {
-    public abstract float GetPerimeter();
-
-    public abstract float GetArea();
-
-    public abstract int GetNumberOfSides();
+    public float GetPerimeter();
 }
 
-class Square : Shape
+interface IHasArea
+{
+    public float GetArea();
+}
+
+interface IHasNumberOfSides
+{
+    public int GetNumberOfSides();
+}
+
+interface IHasDiameter
+{
+    public float GetDiameter();
+}
+
+interface IShape : IHasPerimeter, IHasArea, IHasNumberOfSides
+{ }
+
+class Square : IShape
 {
     public float sideLength;
 
@@ -20,23 +32,23 @@ class Square : Shape
         this.sideLength = sideLength;
     }
 
-    public override float GetPerimeter()
+    public float GetPerimeter()
     {
         return sideLength * 4;
     }
 
-    public override float GetArea()
+    public float GetArea()
     {
         return sideLength * sideLength;
     }
 
-    public override int GetNumberOfSides()
+    public int GetNumberOfSides()
     {
         return 4;
     }
 }
 
-class Circle : Shape
+class Circle : IShape, IHasDiameter
 {
     public float radius;
 
@@ -45,17 +57,17 @@ class Circle : Shape
         this.radius = radius;
     }
 
-    public override float GetPerimeter()
+    public float GetPerimeter()
     {
         return 2 * radius * MathF.PI;
     }
 
-    public override float GetArea()
+    public float GetArea()
     {
         return MathF.PI * radius * radius;
     }
 
-    public override int GetNumberOfSides()
+    public int GetNumberOfSides()
     {
         return 1;
     }
@@ -66,7 +78,7 @@ class Circle : Shape
     }
 }
 
-class EquilateralTriangle : Shape
+class EquilateralTriangle : IShape
 {
     public float sideLength;
 
@@ -75,17 +87,17 @@ class EquilateralTriangle : Shape
         this.sideLength = sideLength;
     }
 
-    public override float GetPerimeter()
+    public float GetPerimeter()
     {
         return sideLength * 3;
     }
 
-    public override float GetArea()
+    public float GetArea()
     {
         return sideLength * sideLength * MathF.Sqrt(3) / 4;
     }
 
-    public override int GetNumberOfSides()
+    public int GetNumberOfSides()
     {
         return 3;
     }
@@ -95,7 +107,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Shape> shapes = new List<Shape>
+        List<IShape> shapes = new List<IShape>
         {
             new Square(4),
             new Circle(2),
