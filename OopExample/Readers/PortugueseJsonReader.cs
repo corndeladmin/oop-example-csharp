@@ -4,7 +4,7 @@ using OopExample.Models;
 
 namespace OopExample.Readers;
 
-public class PortugueseJsonReader
+public class PortugueseJsonReader : IReader
 {
     private List<Transaction>? transactions;
 

@@ -2,7 +2,7 @@ using OopExample.Models;
 
 namespace OopExample.Readers;
 
-public class EnglishCsvReader
+public class EnglishCsvReader : IReader
 {
     private List<Transaction>? transactions;
 
