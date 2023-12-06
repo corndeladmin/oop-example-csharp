@@ -2,7 +2,7 @@ using OopExample.Models;
 
 namespace OopExample.Readers.FileReaders;
 
-public class CsvReader : ICanReadFile
+public class CsvReader
 {
     public List<Transaction> ReadFile(string path)
     {

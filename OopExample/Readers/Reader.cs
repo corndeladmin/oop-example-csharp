@@ -6,11 +6,11 @@ namespace OopExample.Readers;
 
 public class Reader
 {
-    private ICanReadFile fileReader;
-    private ICanPrintSummary summaryPrinter;
+    private CsvReader fileReader;
+    private EnglishSummariser summaryPrinter;
     private List<Transaction>? transactions;
 
-    public Reader(ICanReadFile fileReader, ICanPrintSummary summaryPrinter)
+    public Reader(CsvReader fileReader, EnglishSummariser summaryPrinter)
     {
         this.fileReader = fileReader;
         this.summaryPrinter = summaryPrinter;
