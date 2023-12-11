@@ -2,7 +2,7 @@ using OopExample.Models;
 
 namespace OopExample.Readers.SummaryPrinters;
 
-public class EnglishSummariser
+public class EnglishSummariser : ICanPrintSummary
 {
     public void PrintSummary(List<Transaction> transactions)
     {
